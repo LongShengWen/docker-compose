@@ -1,0 +1,21 @@
+services:
+  iyuuplus:
+    image: iyuucn/iyuuplus-dev:latest
+    container_name: iyuu
+    environment:
+      - TZ=Asia/Shanghai
+      - PUID=0
+      - PGID=0
+    ports:
+      - "8780:8780"
+    volumes:
+      - /data/docker/iyuu/iyuu:/iyuu
+      - /data/docker/iyuu/data:/data
+      - /data/download/:/data/download/
+      - /data/docker/qbittorrent/qBittorrent/BT_backup:/qb
+      - /data/docker/transmission/config/torrents:/tr
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"

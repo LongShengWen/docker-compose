@@ -1,0 +1,25 @@
+services:
+  transmission:
+    image: linuxserver/transmission:4.0.5-r1-ls235
+    container_name: transmission
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TRANSMISSION_WEB_HOME=/ui
+      - TZ=Asia/Shanghai
+      - USER=admin
+      - PASS=***
+    volumes:
+      - /data/docker/transmission/config:/config
+      - /data/docker/transmission/watch:/watch
+      - /data/docker/transmission/ui/web:/ui
+      - /data/download/:/data/download/
+    ports:
+      - "9081:9091"
+    network_mode: "host"
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
