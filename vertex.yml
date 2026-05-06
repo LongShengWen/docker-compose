@@ -1,0 +1,18 @@
+services:
+  vertex:
+    image: lswl/vertex:stable
+    container_name: vertex
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /data/docker/vertex:/vertex
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
