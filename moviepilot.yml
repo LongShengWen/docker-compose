@@ -1,0 +1,32 @@
+services:
+  moviepilot_v2:
+    image: jxxghp/moviepilot-v2:latest
+    container_name: moviepilot
+    environment:
+      - NGINX_PORT=3000
+      - PORT=3001
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - SUPERUSER=admin
+      - SUPERUSER_PASSWORD=**
+      - ZMPT_UID=*
+      - ZMPT_PASSKEY=*
+      - TZ=Asia/Shanghai
+      - DA_TYPE=sqlite
+    volumes:
+      - /data/docker/moviepilot/data:/data
+      - /data/docker/moviepilot/config:/config
+      - /data/docker/moviepilot/core:/moviepilot/.cache/ms-playwright
+      - /data/docker/moviepilot/plugins:/app/plugins
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /data/download:/data/download
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

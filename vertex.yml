@@ -7,7 +7,7 @@ services:
     volumes:
       - /data/docker/vertex:/vertex
     ports:
-      - "3000:3000"
+      - "3050:3000"
     restart: unless-stopped
     labels:
       com.centurylinklabs.watchtower.enable: "true"
