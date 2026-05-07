@@ -21,6 +21,8 @@ services:
       - /data/docker/moviepilot/plugins:/app/plugins
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /data/download:/data/download
+      - /data/docker/qbittorrent/qBittorrent/BT_backup:/BT_backup
+      - /data/docker/transmission/config/torrents:/torrents
     ports:
       - "3000:3000"
       - "3001:3001"

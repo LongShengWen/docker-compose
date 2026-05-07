@@ -12,8 +12,8 @@ services:
       - /data/docker/iyuu/iyuu:/iyuu
       - /data/docker/iyuu/data:/data
       - /data/download/:/data/download/
-      - /data/docker/qbittorrent/qBittorrent/BT_backup:/qb
-      - /data/docker/transmission/config/torrents:/tr
+      - /data/docker/qbittorrent/qBittorrent/BT_backup:/BT_backup
+      - /data/docker/transmission/config/torrents:/torrents
     restart: unless-stopped
     logging:
       options:
