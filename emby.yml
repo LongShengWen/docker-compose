@@ -1,0 +1,21 @@
+services:
+  emby:
+    image: amilys/embyserver:latest
+    container_name: emby
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - GIDLIST=0,2,19
+      - TZ=Asia/Shanghai
+    volumes:
+      - /data/docker/emby:/config
+      - /data/download:/data/download
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
